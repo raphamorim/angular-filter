@@ -9,47 +9,32 @@ App.controller('ClientCtrl', ['$scope', function ($scope) {
         name: 'October'
     }, {
         id: 2,
-        name: 'January'
+        name: 'November'
     }, {
         id: 3,
-        name: 'November'
+        name: 'December'
     }];
 
     $scope.clients = [{
         name: 'Gula Gula',
         designation: 'Restaurant',
-        company: {
-            id: 1,
-            name: 'October'
-        }
+        company: $scope.dateList[0]
     }, {
         name: 'Spoleto',
         designation: 'Restaurant',
-        company: {
-            id: 3,
-            name: 'November'
-        }
+        company: $scope.dateList[1]
     }, {
         name: 'Burguer King',
         designation: 'Fast-food',
-        company: {
-            id: 2,
-            name: 'January'
-        }
+        company: $scope.dateList[0]
     }, {
         name: 'Algo do camarão',
         designation: 'Restaurant',
-        company: {
-            id: 1,
-            name: 'October'
-        }
+        company: $scope.dateList[2]
     }, {
         name: 'Bobs',
         designation: 'Fast-food',
-        company: {
-            id: 3,
-            name: 'November'
-        }
+        company: $scope.dateList[2]
     }];
 
     $scope.setSelectedClient = function () {
@@ -58,13 +43,6 @@ App.controller('ClientCtrl', ['$scope', function ($scope) {
             $scope.selectedDate = _.without($scope.selectedDate, id);
         } else {
             $scope.selectedDate.push(id);
-        }
-        return false;
-    };
-
-    $scope.isChecked = function (id) {
-        if (_.contains($scope.selectedDate, id)) {
-            return 'glyphicon glyphicon-thumbs-up pull-right';
         }
         return false;
     };
@@ -80,9 +58,9 @@ angular.module('App.filters', []).filter('dateFilter', [function () {
             var tempClients = [];
             angular.forEach(selectedDate, function (id) {
                 angular.forEach(clients, function (client) {
-                    if (angular.equals(client.company.id, id)) {
+
+                    if (angular.equals(client.company.id, id))
                         tempClients.push(client);
-                    }
                 });
             });
             return tempClients;
