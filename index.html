@@ -8,91 +8,126 @@
     <style>
         body {
             margin: 0 auto;
-            width: 820px;
-            background: #5A4181;
+            width: 880px;
+            background: #FFFFFF;
         }
         .content {
-            background: #f5f5f5;
             padding: 15px;
             border-bottom: 5px;
             min-height: 500px;
+        }
+
+        .page-header h2 {
+            font-family: "Lucida Grande", arial;
+            letter-spacing: 0.014em;
+            font-size: 40px;
         }
 
         .inline>li {
             list-style: none;
             margin-left: -40px;
         }
+
+        .nav-pills>li.active>a,
+        .nav-pills>li.active>a:hover,
+        .nav-pills>li.active>a:focus {
+            background: #EB6F63;
+            border-radius: 0px;
+        }
+
+        li.date {
+            padding-top: 5px;
+        }
+
+        .split { float: left; }
+        .split.less {
+            width: 20%;
+        }
+        .split.more {
+            width: 80%;
+        }
+
     </style>
 </head>
 <body>
 	<div class="content" ng-app="clientApp" ng-controller="ClientCtrl">
-    <div class="page-header">
-        <h2>Cron Filter <small>Angularjs</small></h2>
-        <h5>Angular component for presenting a simplified interface for users to specify cron entries.</h5>
-    </div>
-    <ul class="inline">
-        <li>
-            <div class="alert alert-info">
-                 Total of Items: {{filtered.length}}
-            </div>
-        </li>
-        <li>
-            <div class="btn-group" ng-class="{open: open}">
-                <button class="btn" disabled="disabled">Filter by Date</button>
-                <button class="btn dropdown-toggle" ng-click="open=!open">
-                <span class="caret"></span>
+        <div class="page-header">
+            <h2>Cron Filter <small>Angularjs</small></h2>
+            <h5>Angular component for presenting a simplified interface for users to specify cron entries.</h5>
+        </div>
 
+        <div class="split less">
+
+            <div class="btn-group" ng-class="{open: open}">
+                <button class="btn" disabled="disabled">Actions</button>
+                <button class="btn dropdown-toggle" ng-click="open=!open">
+                    <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                    <li><a ng-click="checkAll()"><span class="glyphicon glyphicon-ok"></span>  Check All</a>
+                    <li><a ng-click="checkAll()"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Order by Date</a>
 
                     </li>
-                    <li><a ng-click="selectedCompany=[];"><i class="glyphicon glyphicon-remove"></i>  Uncheck All</a>
+                    <li><a ng-click="selectedDate=[];"><i class="glyphicon glyphicon-sort-by-alphabet"></i>  Order by Name</a>
 
                     </li>
-                    <li class="divider"></li>
-                    <li data-ng-repeat="dates in dateList"> <a data-ng-click="setSelectedClient()">{{dates.name}}<span data-ng-class="isChecked(dates.id)"></span></a>
+                    <!-- <li ng-repeat="dates in dateList"> <a ng-click="setSelectedClient()">{{dates.name}}<span ng-class="isChecked(dates.id)"></span></a>
 
-                    </li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-    <hr/>
-     <h3>Company Table:</h3>
+                </li> -->
+            </ul>
+        </div>
 
-    <table class="table table-hover table-striped">
-        <thead>
-            <tr>
-                <th style="width:10%">#</th>
-                <th style="width:20%">Company</th>
-                <th style="width:40%">Type</th>
-                <th style="width:30%">Last update</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-ng-repeat="client in filtered = (clients | dateFilter:selectedDate)">
-                <td>{{$index + 1}}</td>
-                <td><em>{{client.name}}</em>
+        <br><br>
 
-                </td>
-                <td>{{client.designation}}</td>
-                <td>{{client.company.name}}</td>
-            </tr>
-        </tbody>
-    </table>
-	</div>
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="dates in dateList" class="date">
+                <input type="checkbox" ng-click="setSelectedClient()"> {{dates.name}}</li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="split more" id="items">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active">
+                <a href="#items">
+                    <span class="badge pull-right">{{filtered.length}}</span>
+                    Items
+                </a>
+            </li>
+
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:10%">#</th>
+                        <th style="width:20%">Company</th>
+                        <th style="width:40%">Type</th>
+                        <th style="width:30%">Last update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="client in filtered = (clients | dateFilter:selectedDate)">
+                        <td>{{$index + 1}}</td>
+                        <td><em>{{client.name}}</em>
+
+                        </td>
+                        <td>{{client.designation}}</td>
+                        <td>{{client.company.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
 
 
-	<!-- Include AngularJS from Google's CDN -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
+    <!-- Include AngularJS from Google's CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"></script>
 
-	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular-resource.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular-resource.js"></script>
 
-	<script src="angular-filter.js"></script>
+    <script src="angular-filter.js"></script>
 </body>
 </html>
