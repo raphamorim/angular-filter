@@ -1,0 +1,40 @@
+body {
+    margin: 0 auto;
+    width: 880px;
+    background: #FFFFFF;
+}
+.content {
+    padding: 15px;
+    border-bottom: 5px;
+    min-height: 500px;
+}
+
+.page-header h2 {
+    font-family: "Lucida Grande", arial;
+    letter-spacing: 0.014em;
+    font-size: 40px;
+}
+
+.inline>li {
+    list-style: none;
+    margin-left: -40px;
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:hover,
+.nav-pills>li.active>a:focus {
+    background: #EB6F63;
+    border-radius: 0px;
+}
+
+li.date {
+    padding-top: 5px;
+}
+
+.split { float: left; }
+.split.less {
+    width: 20%;
+}
+.split.more {
+    width: 80%;
+}
