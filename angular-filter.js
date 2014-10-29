@@ -17,24 +17,24 @@ App.controller('ClientCtrl', ['$scope', 'utils',
         }];
 
         $scope.clients = [{
-            name: 'Gula Gula',
-            designation: 'Restaurant',
+            name: 'Suikoden 2',
+            designation: 'RPG',
             company: $scope.dateList[0]
         }, {
-            name: 'Spoleto',
-            designation: 'Restaurant',
+            name: 'Radiata Stories',
+            designation: 'RPG',
             company: $scope.dateList[1]
         }, {
-            name: 'Burguer King',
-            designation: 'Fast-food',
+            name: 'Uncharted 3',
+            designation: 'Action',
             company: $scope.dateList[0]
         }, {
-            name: 'Algo do camarão',
-            designation: 'Restaurant',
+            name: 'Assassin\'s Creed 2',
+            designation: 'Action',
             company: $scope.dateList[2]
         }, {
-            name: 'Bobs',
-            designation: 'Fast-food',
+            name: 'Brave Fencer Musash',
+            designation: 'RPG',
             company: $scope.dateList[2]
         }];
 
