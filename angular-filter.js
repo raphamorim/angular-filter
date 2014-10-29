@@ -7,35 +7,71 @@ App.controller('ClientCtrl', ['$scope', 'utils',
         $scope.selectedDate = [];
         $scope.dateList = [{
             id: 1,
-            name: 'October'
+            name: 'Sunday'
         }, {
             id: 2,
-            name: 'November'
+            name: 'Monday'
         }, {
             id: 3,
-            name: 'December'
+            name: 'Tuesday'
+        }, {
+            id: 4,
+            name: 'Wednesday'
+        }, {
+            id: 5,
+            name: 'Thursday'
+        }, {
+            id: 6,
+            name: 'Friday'
+        }, {
+            id: 7,
+            name: 'Saturday'
         }];
 
         $scope.clients = [{
             name: 'Suikoden 2',
-            designation: 'RPG',
+            designation: 'PS One',
             company: $scope.dateList[0]
         }, {
             name: 'Radiata Stories',
-            designation: 'RPG',
+            designation: 'PS2',
             company: $scope.dateList[1]
         }, {
             name: 'Uncharted 3',
-            designation: 'Action',
+            designation: 'PS3',
             company: $scope.dateList[0]
         }, {
             name: 'Assassin\'s Creed 2',
-            designation: 'Action',
+            designation: 'PS3',
             company: $scope.dateList[2]
         }, {
-            name: 'Brave Fencer Musash',
-            designation: 'RPG',
+            name: 'Brave Fencer Musashi',
+            designation: 'PS One',
             company: $scope.dateList[2]
+        }, {
+            name: 'Harvest Moon: Back to Nature',
+            designation: 'PS One',
+            company: $scope.dateList[6]
+        }, {
+            name: 'Fire Emblem: Awaking',
+            designation: 'Nintendo 3DS',
+            company: $scope.dateList[5]
+        }, {
+            name: 'Pokemon Silver',
+            designation: 'Gameboy',
+            company: $scope.dateList[6]
+        }, {
+            name: 'Metal Gear Solid 3',
+            designation: 'PS2',
+            company: $scope.dateList[4]
+        }, {
+            name: 'Kingdom Hearts: chain of memories',
+            designation: 'PS2',
+            company: $scope.dateList[3]
+        }, {
+            name: 'Harvest Moon: Hero of Leaf Valley',
+            designation: 'PSP',
+            company: $scope.dateList[4]
         }];
 
         $scope.setSelectedClient = function() {
@@ -46,6 +82,26 @@ App.controller('ClientCtrl', ['$scope', 'utils',
                 $scope.selectedDate.push(id);
             }
             return false;
+        };
+
+        $scope.selWeek = function() {
+            var week = document.querySelector('.week'),
+                checkboxes = document.getElementsByClassName('dateCheck');
+
+            if( week.style.visibility == 'visible' ) {
+
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = false;
+                    }
+                }
+
+                $scope.selectedDate = [];
+                week.style.visibility = 'hidden';
+            } else {
+                week.style.visibility = 'visible';
+            }
+
         };
 
         // $scope.checkAll = function() {
