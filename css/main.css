@@ -28,7 +28,7 @@ body {
 }
 
 .week {
-    visibility: hidden;
+    display: none;
 }
 
 li.date {

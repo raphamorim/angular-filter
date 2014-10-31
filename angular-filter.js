@@ -88,7 +88,7 @@ App.controller('ClientCtrl', ['$scope', 'utils',
             var week = document.querySelector('.week'),
                 checkboxes = document.getElementsByClassName('dateCheck');
 
-            if( week.style.visibility == 'visible' ) {
+            if( week.style.display == 'block' ) {
 
                 for (var i = 0; i < checkboxes.length; i++) {
                     if (checkboxes[i].type == 'checkbox') {
@@ -97,9 +97,9 @@ App.controller('ClientCtrl', ['$scope', 'utils',
                 }
 
                 $scope.selectedDate = [];
-                week.style.visibility = 'hidden';
+                week.style.display = 'none';
             } else {
-                week.style.visibility = 'visible';
+                week.style.display = 'block';
             }
 
         };
