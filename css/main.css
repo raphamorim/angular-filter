@@ -9,8 +9,8 @@ body {
     min-height: 500px;
 }
 
+.page-header { font-family: "Lucida Grande", arial; }
 .page-header h2 {
-    font-family: "Lucida Grande", arial;
     letter-spacing: 0.014em;
     font-size: 40px;
 }
@@ -20,9 +20,7 @@ body {
     margin-left: -40px;
 }
 
-.nav-pills>li.active>a,
-.nav-pills>li.active>a:hover,
-.nav-pills>li.active>a:focus {
+.nav-pills>li.active>a {
     background: #EB6F63;
     border-radius: 0px;
 }
