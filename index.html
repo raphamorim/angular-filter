@@ -53,9 +53,18 @@
                 <select class="every" onchange="angular.element(document.querySelector('.content')).scope().applySummary()">
                     <option ng-repeat="n in [] | range:31" value="{{$index + 1}}">{{$index + 1}}</option>
                 </select>  {{selectedOption.sing}}
-            </p><p>
-            <!-- <strong>Starts on:</strong> {{  selectedOptionValues(sel) }} -->
-        </p><br><br>
+            </p>
+
+            <p ng-if="repeatOn()"><strong>Repeats on:</strong><br><br>
+                <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="S">S
+                <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="M">M
+                <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="T">T
+                <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="W">W
+                <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="T">T
+                <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="F">F
+                <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="S">S
+            </p>
+        <br>
 
         <p><strong>Summary: {{ summary }} on Monday</strong></p>
         <p><input type="submit" value="Okay"></p>

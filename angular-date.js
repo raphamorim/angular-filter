@@ -27,6 +27,13 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 
 	$scope.selectedOption = $scope.dataRepeat[1];
 
+	$scope.repeatOn = function() {
+		if ($scope.selectedOption.key == 'm')
+			return true;
+
+		return false;
+	}
+
 	$scope.selectedOptionValues = function(){
 		if ($scope.selectedOption == $scope.dataRepeat[1]) {
 			return $scope.selectedOption.options;
