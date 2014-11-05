@@ -26,23 +26,39 @@
 </head>
 <body>
 	<!-- <div class="content" ng-app="clientApp" ng-controller="ClientCtrl"> -->
-    <div class="content">
+    <div id="content" class="content" ng-app="weekApp" ng-controller="weekCtrl">
         <div id="wrapper">
-          <div id="box">
-            <div class="header">
-                <h4>Create Event</h4>
+            <div id="box">
+                <div class="header">
+                    <h4>Create Event</h4>
+                </div>
+                <h6>Name?</h6>
+                <input type="text" placeholder="Daily meeting">
+                <h6>Where?</h6>
+                <input type="text" placeholder="Rio de Janeiro, Glória">
+                <h6>Date?</h6>
+
+                <span class="tooltip" ng-click="showDatePicker()" data-title="Click to select date">Select Date</span>
+
+                <input type="submit" value="Create">
             </div>
-            <h6>Name?</h6>
-            <input type="text" placeholder="Daily meeting">
-            <h6>Where?</h6>
-            <input type="text" placeholder="Rio de Janeiro, Glória">
-            <h6>Date?</h6>
-
-            <span class="tooltip" data-title="Click to select date">Select Date</span>
-
-            <input type="submit" value="Create">
         </div>
+        <div class="modal">
+            <div class="selDate">
+            <div class="break"></div>
+                <p onchange="angular.element(document.querySelector('.content')).scope().applySummary()"><strong>Repeats:</strong>
+                    <select ng-options="r.name for r in dataRepeat" ng-model="selectedOption"></select>
+                </p><p>
+                <strong>Repeat every:</strong>
+                <select class="every" onchange="angular.element(document.querySelector('.content')).scope().applySummary()">
+                    <option ng-repeat="n in [] | range:31" value="{{$index + 1}}">{{$index + 1}}</option>
+                </select>  {{selectedOption.sing}}
+            </p><p>
+            <!-- <strong>Starts on:</strong> {{  selectedOptionValues(sel) }} -->
+        </p><br><br>
 
+        <p><strong>Summary: {{ summary }} on Monday</strong></p>
+        <p><input type="submit" value="Okay"></p>
     </div>
 </div>
 </div>
@@ -51,6 +67,6 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular-resource.js"></script>
 
-<!--     <script src="angular-filter.js"></script> -->
+<script src="angular-date.js"></script>
 </body>
 </html>
