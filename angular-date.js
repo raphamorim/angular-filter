@@ -27,8 +27,21 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 
 	$scope.selectedOption = $scope.dataRepeat[1];
 
+	$scope.getDate = function(when) {
+		var today = new Date(),
+			dd = today.getDate(),
+			mm = today.getMonth()+1,
+			yyyy = today.getFullYear();
+
+		if (when == 'today') {
+			return dd+'/'+mm+'/'+yyyy;
+		}
+
+		return dd+'/'+mm+'/'+yyyy;
+	}
+
 	$scope.repeatOn = function() {
-		if ($scope.selectedOption.key == 'm')
+		if ($scope.selectedOption.key == 'w')
 			return true;
 
 		return false;
