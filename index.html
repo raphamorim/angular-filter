@@ -45,7 +45,7 @@
         </div>
         <div class="modal">
             <div class="selDate">
-            <div class="break"></div>
+                <p><h2>Repeat</h2></p>
                 <p onchange="angular.element(document.querySelector('.content')).scope().applySummary()"><strong>Repeats:</strong>
                     <select ng-options="r.name for r in dataRepeat" ng-model="selectedOption"></select>
                 </p><p>
@@ -65,10 +65,10 @@
                 <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="S">S
             </p>
 
-            <p><strong>Starts on:</strong> <input type="text" placeholder="{{getDate(today)}}"></p>
+            <p><strong>Starts on:</strong> <input type="text" placeholder="{{getTodayDate()}}" readonly></p>
         <br>
 
-        <p><strong>Summary: {{ summary }} on Monday</strong></p>
+        <p><strong>Summary: {{ summary }}</strong></p>
         <p><input type="submit" value="Okay"></p>
     </div>
 </div>

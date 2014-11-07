@@ -27,14 +27,19 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 
 	$scope.selectedOption = $scope.dataRepeat[1];
 
-	$scope.getDate = function(when) {
+	$scope.getTodayDate = function(format) {
 		var today = new Date(),
 			dd = today.getDate(),
 			mm = today.getMonth()+1,
 			yyyy = today.getFullYear();
 
-		if (when == 'today') {
-			return dd+'/'+mm+'/'+yyyy;
+		var monthNames = [ "January", "February", "March", "April", "May", "June",
+    		"July", "August", "September", "October", "November", "December" ];
+
+		if (format == 'y') {
+			return monthNames[mm] + ' ' + dd;
+		} else if (format == 'm') {
+			return 'day ' + dd;
 		}
 
 		return dd+'/'+mm+'/'+yyyy;
@@ -61,13 +66,28 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 		var val = document.querySelector('.every').value;
 
 		if (val > 1) {
-			$scope.summary = "Every " + val + ' ' + $scope.selectedOption.sing
+			$scope.summary = "Every " + val + ' ' + $scope.selectedOption.sing + $scope.makeOn($scope.selectedOption);
 		} else {
-			$scope.summary = $scope.selectedOption.name;
+			$scope.summary = $scope.selectedOption.name + $scope.makeOn($scope.selectedOption);
 		}
 
 		$scope.$apply()
 	};
+
+	$scope.makeOn = function(when) {
+
+		if (when.key == 'w') {
+			return ' on + selectedMonths'
+		} else if (when.key == 'm') {
+			return ' on ' + $scope.getTodayDate('m');
+		} else if (when.key == 'd') {
+			return ''
+		} else if (when.key == 'y') {
+			return ' on ' + $scope.getTodayDate('y');
+		}
+
+		return ''
+	}
 
 	// View
 	$scope.showDatePicker = function() {
