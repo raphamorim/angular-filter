@@ -77,8 +77,8 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 	$scope.makeOn = function(when) {
 
 		if (when.key == 'w') {
-			return ' on + selectedMonths'
-		} else if (when.key == 'm') {
+			return ' on ' + $scope.getSelectedWeekdays();
+ 		} else if (when.key == 'm') {
 			return ' on ' + $scope.getTodayDate('m');
 		} else if (when.key == 'd') {
 			return ''
@@ -87,6 +87,22 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 		}
 
 		return ''
+	}
+
+	$scope.getSelectedWeekdays = function(){
+		var s = document.querySelectorAll('input[name="weekRepeatOn"]:checked'),
+			itens = [];
+
+		Object.keys(s).forEach(function(key) {
+    		if(s.length > key) {
+    			itens.push(s[key].value);
+    		}
+		});
+
+		if (itens.length == 7)
+			return 'all days';
+
+		return itens.join(', ');
 	}
 
 	// View
