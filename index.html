@@ -55,7 +55,7 @@
                 </select>  {{selectedOption.sing}}
             </p>
 
-            <p ng-if="repeatOn()"><strong>Repeats on:</strong><br><br>
+            <p ng-if="repeatOn()" onchange="angular.element(document.querySelector('.content')).scope().applySummary()"><strong>Repeats on:</strong><br><br>
                 <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="Sunday">S
                 <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="Monday">M
                 <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="Tuesday">T
