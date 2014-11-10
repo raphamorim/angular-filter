@@ -65,7 +65,7 @@
                 <input type="checkbox" class="weekRepeatOn" name="weekRepeatOn" value="Saturday">S
             </p>
 
-            <p><strong>Starts on:</strong> <input type="text" placeholder="{{getTodayDate()}}" readonly></p>
+            <p onchange="angular.element(document.querySelector('.content')).scope().applySummary()"><strong>Starts on:</strong> <input class="date" type="date" placeholder="{{getDateSpec()}}" value="{{getDateSpec()}}"></p>
         <br>
 
         <p><strong>Summary: {{ summary }}</strong></p>

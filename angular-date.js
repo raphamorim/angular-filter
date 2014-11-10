@@ -27,12 +27,20 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 
 	$scope.selectedOption = $scope.dataRepeat[1];
 
-	$scope.getTodayDate = function(format) {
+	$scope.getDateSpec = function(format, date) {
 		var today = new Date(),
 			dd = today.getDate(),
 			mm = today.getMonth()+1,
 			yyyy = today.getFullYear(),
 			w = today.getDay();
+
+		if (typeof date == "string" && date != "") {
+			var today = new Date(date),
+				dd = today.getDate()+1,
+				mm = today.getMonth(),
+				yyyy = today.getFullYear(),
+				w = today.getDay();
+		}
 
 		var monthNames = [ "January", "February", "March", "April", "May", "June",
     		"July", "August", "September", "October", "November", "December" ];
@@ -47,7 +55,7 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 			return weekdayNames[w];
 		}
 
-		return dd+'/'+mm+'/'+yyyy;
+		return yyyy+'-'+mm+'-'+dd;
 	}
 
 	$scope.repeatOn = function() {
@@ -65,7 +73,7 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 		}
 	};
 
-	$scope.summary = $scope.selectedOption.name + ' on ' + $scope.getTodayDate('w');
+	$scope.summary = $scope.selectedOption.name + ' on ' + $scope.getDateSpec('w');
 
 	$scope.applySummary = function(){
 		var val = document.querySelector('.every').value;
@@ -89,15 +97,16 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 	};
 
 	$scope.makeOn = function(when) {
+		var date = document.querySelector('.date').value;
 
 		if (when.key == 'w') {
 			return ' on ' + $scope.getSelectedWeekdays();
  		} else if (when.key == 'm') {
-			return ' on ' + $scope.getTodayDate('m');
+			return ' on ' + $scope.getDateSpec('m', date);
 		} else if (when.key == 'd') {
 			return ''
 		} else if (when.key == 'y') {
-			return ' on ' + $scope.getTodayDate('y');
+			return ' on ' + $scope.getDateSpec('y', date);
 		}
 
 		return ''
@@ -117,7 +126,7 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 			return 'all days';
 
 		if (itens.length <= 0)
-			return $scope.getTodayDate('w');
+			return $scope.getDateSpec('w');
 
 		return itens.join(', ');
 	}
