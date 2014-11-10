@@ -31,15 +31,20 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 		var today = new Date(),
 			dd = today.getDate(),
 			mm = today.getMonth()+1,
-			yyyy = today.getFullYear();
+			yyyy = today.getFullYear(),
+			w = today.getDay();
 
 		var monthNames = [ "January", "February", "March", "April", "May", "June",
     		"July", "August", "September", "October", "November", "December" ];
+
+    	var weekdayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 		if (format == 'y') {
 			return monthNames[mm] + ' ' + dd;
 		} else if (format == 'm') {
 			return 'day ' + dd;
+		} else if (format == 'w') {
+			return weekdayNames[w];
 		}
 
 		return dd+'/'+mm+'/'+yyyy;
@@ -60,7 +65,7 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 		}
 	};
 
-	$scope.summary = $scope.selectedOption.name;
+	$scope.summary = $scope.selectedOption.name + ' on ' + $scope.getTodayDate('w');
 
 	$scope.applySummary = function(){
 		var val = document.querySelector('.every').value;
@@ -72,6 +77,15 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 		}
 
 		$scope.$apply()
+	};
+
+	$scope.confirmSummary = function(){
+		var item = document.querySelector('.tooltip');
+
+		item.innerHTML = $scope.summary;
+		item.setAttribute('data-title','Click to change date');
+
+		document.querySelector('.modal').style.display = 'none';
 	};
 
 	$scope.makeOn = function(when) {
@@ -101,6 +115,9 @@ app.controller('weekCtrl', ['$scope', function($scope) {
 
 		if (itens.length == 7)
 			return 'all days';
+
+		if (itens.length <= 0)
+			return $scope.getTodayDate('w');
 
 		return itens.join(', ');
 	}
