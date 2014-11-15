@@ -1,0 +1,22 @@
+{
+  "name": "ng-date-repeat",
+  "version": "1.0.0",
+  "description": "Angular component for presenting a simplified interface for users to specify repeated events.",
+  "main": "angular-date.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raphamorim/ng-date-repeat"
+  },
+  "author": "Raphael Amorim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raphamorim/ng-date-repeat/issues"
+  },
+  "homepage": "https://github.com/raphamorim/ng-date-repeat",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  }
+}
