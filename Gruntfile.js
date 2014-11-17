@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         concat: {
             basic: {
                 src: ['src/app.js', 'src/controller.js', 'src/filters.js'],
@@ -13,7 +14,12 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 report: 'min',
-                mangle: false
+                mangle: false,
+                banner: '/*\n' +
+                '   <%= pkg.name %> - v<%= pkg.version %>\n' +
+                '   <%= pkg.author %>, license: <%= pkg.license %>\n' +
+                '   <%= pkg.repository.url %>\n' +
+                '*/\n'
             },
             main: {
                 files: {
