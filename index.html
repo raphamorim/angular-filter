@@ -26,11 +26,22 @@
 </head>
 <body>
     <div id="content" class="content" ng-app="dateRepeat" ng-controller="dateRepeatCtrl">
+        <h1><span class="color">Ng</span> Date Repeat</h1>
+        <br>
+        <h3 id="about"><a href="#about">About</a></h3>
+
+        <p>Angular component for presenting a simplified interface for users to specify repeated events.</p>
+
+        <p>Inspired in Google Calendar Repeat box component.</p>
+
+        <p>Created with so much love by <a href="http://github.com/raphamorim">@raphamorim</a>.</p>
+
+        <br>
+        <h3 id="example"><a href="#example">Example</a></h3>
+
+
         <div id="wrapper">
             <div id="box">
-                <div class="header">
-                    <h4>Create Event</h4>
-                </div>
                 <h6>Name?</h6>
                 <input type="text" placeholder="Daily meeting">
                 <h6>Where?</h6>
@@ -38,9 +49,8 @@
                 <h6>Date?</h6>
 
                 <span class="tooltip" ng-click="showDatePicker()" data-title="Click to select date">Select Date</span>
-
-                <input type="submit" value="Create">
             </div>
+            <br><br>
         </div>
         <div class="modal">
             <div class="selDate">
@@ -71,6 +81,17 @@
         <p><input type="submit" ng-click="confirmSummary()" value="Okay"></p>
     </div>
 </div>
+
+<h3 id="guide"><a href="#guide">Guide</a></h3>
+    <p>Not available yet.</p>
+
+<h3 id="format"><a href="#format">Format</a></h3>
+    <p>Angular Date Repeat creates unique format and it's relative.
+    Changed by inputed data.</p>
+
+<h3 id="license"><a href="#license">License</a></h3>
+    <p>Ng-Date-Repeat license is MIT.</p>
+
 </div>
 
 <!-- Angularjs Src -->
