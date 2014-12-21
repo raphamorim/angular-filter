@@ -136,7 +136,7 @@ app.controller('dateRepeatCtrl', ['$scope', function($scope) {
         return itens.join(', ');
     }
 
-    // View
+    // Show date picker when start select
     $scope.showDatePicker = function() {
         document.querySelector('.modal').style.display = 'block';
     };
